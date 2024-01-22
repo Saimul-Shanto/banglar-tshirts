@@ -3,6 +3,7 @@ import TShirt from "../TShirt/TShirt";
 import "./Home.css";
 import Cart from "../Cart/Cart";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const Home = () => {
   const tshirts = useLoaderData();
@@ -14,6 +15,7 @@ const Home = () => {
     const exist = cart.find((ts) => ts._id === tshirt._id);
     if (exist) {
       //since this t-shirt already exist in the cart so we don't add that item any more.
+      toast("You already added this item");
     } else {
       const newCart = [...cart, tshirt];
       setCart(newCart);
